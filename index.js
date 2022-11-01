@@ -22,6 +22,6 @@ io.sockets.on('connection', function(socket) {
     });
 
     socket.on('Sending', function(data) {
-        io.sockets.emit('Adding message', {msg: data.msg, name: data.name})
+        io.sockets.emit('Adding message', {msg: data.msg, name: data.name, className: data.className})
     })
 });

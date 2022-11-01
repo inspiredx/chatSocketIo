@@ -57,30 +57,30 @@
         var random = Math.floor(Math.random() * (max - min)) + min;
 
         var alertClass;
-        switch(random) {
+        switch (random) {
             case 1:
-            alertClass = 'secondary';
-            break;
-            
+                alertClass = 'secondary';
+                break;
+
             case 2:
-            alertClass = 'danger';
-            break;
+                alertClass = 'danger';
+                break;
 
             case 3:
-            alertClass = 'success';
-            break;
+                alertClass = 'success';
+                break;
 
             case 4:
-            alertClass = 'warning';
-            break;
+                alertClass = 'warning';
+                break;
 
             case 5:
-            alertClass = 'info';
-            break;
+                alertClass = 'info';
+                break;
 
             case 6:
-            alertClass = 'light';
-            break;
+                alertClass = 'light';
+                break;
         }
 
 
@@ -93,12 +93,17 @@
 
             $form.submit(function (event) {
                 event.preventDefault();
-                socket.emit("Sending", {msg: $input.val(), name: $name.val(), className: alertClass});
+                socket.emit("Sending", {
+                    msg: $input.val(),
+                    name: $name.val(),
+                    className: alertClass
+                });
                 $input.val('');
             })
 
             socket.on('Adding message', function (data) {
-                $all_messages.append("<div class ='alert alert-" + data.className + "'><b>" + data.name + "</b>: " + data.msg +"</div>")
+                $all_messages.append("<div class ='alert alert-" + data.className + "'><b>" + data
+                    .name + "</b>: " + data.msg + "</div>")
             });
         })
     </script>
